@@ -7,11 +7,10 @@ import Link from 'next/link'
 import Paragraph from '../../components/Paragraph'
 import Row from '../../components/Row'
 
-import { getArtists } from '../../lib/api'
+import { getAlbums } from '../../lib/api'
 
 export async function getStaticProps() {
-    const albums = await getArtists();
-    console.log (artists)
+    const albums = await getAlbums();
     return {
         props: {
             albums
@@ -54,7 +53,7 @@ const AlbumsPage = ({ albums }) => {
         <Container>
         <Heading level="1">Albums</Heading>
         <Row> 
-        {albums.map((album, index) => {
+        {albums.map((album, index) => { 
             const { featuredImage, title, slug } = album;
             const { src, alt, width, height } = featuredImage;
             return <Col key={index} xs="6" sm="4">
